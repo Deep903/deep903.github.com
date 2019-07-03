@@ -1,0 +1,55 @@
+body{
+    background-color: black
+}
+
+h1{
+    color:gold
+}
+
+#outer-menu{
+    height: 100px;
+    /*background: url(images/goldbar.png) repeat-x; */
+    background: black;
+}
+
+.table{
+display: table;
+margin: 0 auto;
+
+}
+
+ul#horizontal-list {
+    min-width: 10%;
+    list-style: none;
+    padding-top: 0px;
+    
+    
+}
+
+ul#horizontal-list li{
+    display: inline;
+    margin:10px;
+}
+
+#divider-bar{
+    background: url(images/goldbar.png) repeat-x;
+    height: 5%;
+    position: relative;
+    display:block;
+}
+
+#gold-box{
+
+    max-width: 10%;
+    padding: 1rem;
+    position: relative;
+    background: linear-gradient(to right, gold, #c7831c, rgb(253, 218, 20), rgba(63, 40, 5, 0.87), rgb(236, 184, 10));
+    padding: 3px;
+    margin: 10px;
+}
+
+#module{
+    background: black;
+    color: white;
+    padding: 2rem;
+}
