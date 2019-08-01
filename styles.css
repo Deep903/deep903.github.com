@@ -3,7 +3,7 @@ body{
 
   padding:0;
   margin:0;
-  background-color: #f8f9fb;
+  background-color: #2a2c2e;
 }
 
 /* Global */
@@ -18,12 +18,17 @@ ul{
   padding:0;
 }
 
-/* Header */
+/* Header/Nav */
+.navbar{
+ 
+}
+
 header{
-  background: #ece4dc;
-  color:#171316;
+  background: #2a2c2e;
+  color:white;
   padding-top:30px;
   min-height: 70px;
+  border-bottom:white solid 1px;
 }
 
 header a{
@@ -31,6 +36,7 @@ header a{
   text-decoration:none;
   text-transform: uppercase;
   font-size:16px;
+
 }
 
 header li{
@@ -58,12 +64,13 @@ header a:hover{
 /* Showcase */
 #showcase{
   min-height: 400px;
-  background:url("./images/Star\ Destoryer\ 2160p\ 4K.png");
+  /*background:url("./images/Star\ Destoryer\ 2160p\ 4K.png"); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 -275px;
   color: #f8f9fb;
   text-align:center;
+  background-color:#2a2c2e;
 }
 
 #showcase h1{
@@ -74,4 +81,14 @@ header a:hover{
 
 #showcase p{
   font-size:20px;
+}
+
+.carousel-inner img{
+  width:70%;
+  height:70%;
+  max-height: auto;
+}
+
+.carousel-inner > .item{
+  height:400px;
 }
