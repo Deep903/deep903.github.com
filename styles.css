@@ -59,6 +59,31 @@ header a:hover{
   font-weight:bold;
 }
 
+
+
+/* Infocase */
+#infocase .jumbotron{
+  background-color:#4d4c4c;
+  color:white;
+  text-align:center;
+  background:url("./images/Star\ Destoryer\ 2160p\ 4K.png") no-repeat center center;
+  background-size:cover;
+  padding:300px
+}
+
+/* Portfolio-intro */
+#portfolio-intro .jumbotron{
+  background-color:#2a2c2e;
+  color:white;
+  text-align:center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+}
+
+#infocase .container{
+ background:rgba(0,0,0,.3a);
+}
+
 /* Showcase */
 #showcase{
   min-height: 400px;
@@ -82,11 +107,15 @@ header a:hover{
 }
 
 .carousel-inner img{
-  width:70%;
-  height:70%;
-  max-height: auto;
+  width:auto;
+  height:700px;
+  max-height: 700px;
 }
 
 .carousel-inner > .item{
   height:400px;
+}
+
+.carousel-inner .caption-adobe{
+background: black;
 }
