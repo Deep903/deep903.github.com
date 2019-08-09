@@ -3,7 +3,7 @@ body{
 
   padding:0;
   margin:0;
-  background-color: #2a2c2e;
+  background-color: #18181b;
 }
 
 /* Global */
@@ -34,7 +34,6 @@ header a{
   text-decoration:none;
   text-transform: uppercase;
   font-size:16px;
-
 }
 
 header li{
@@ -80,12 +79,45 @@ header a:hover{
   font-size: 48px;
 }
 
+/* Cardstack */
+#cardstack{
+margin-left: 100px;
+margin-right: 100px;
+
+}
+
+#cardstack .card{
+margin:10px;
+background-color:#4a4c4e;
+color:white;
+}
+
+#cardstack .card-img-top{
+  margin-top:20px;
+
+  width:auto;
+  height:400px;
+  max-height: 300px;
+
+}
+
 #infocase .container{
  background:rgba(0,0,0,.5);
 }
 
+/* misc-intro */
+#misc-intro .jumbotron{
+  background-color:#2a2c2e;
+  color:white;
+  text-align:center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  margin-top: 35px;
+}
+
 /* Showcase */
 #showcase{
+  padding:35px;
   min-height: 400px;
   /*background:url("./images/Star\ Destoryer\ 2160p\ 4K.png"); */
   background-repeat: no-repeat;
@@ -93,7 +125,7 @@ header a:hover{
   background-position: 0 -275px;
   color: #f8f9fb;
   text-align:center;
-  background-color:#2a2c2e;
+  background-color: #18181b;
 }
 
 #showcase h1{
