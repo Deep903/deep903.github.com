@@ -69,10 +69,36 @@ header a:hover{
   background-color:#4d4c4c;
   color:white;
   text-align:center;
-  background:url("./images/Star\ Destoryer\ 2160p\ 4K.png") no-repeat center center;
+  background:url("./images/Java.jpg") no-repeat center center;
   background-size:cover;
-  padding:300px
+  padding:135px;
 }
+
+#infocase img{
+  /* Makes image a circle and formats its size */
+  width:auto;
+  max-height: 350px;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-bottom: 40px;
+ 
+  /* Centers the image */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  border: 10px solid white;
+  
+
+}
+
+#infocase h1{
+  font-family: 'Montserrat', sans-serif;
+}
+
+#infocase .container{
+  background:rgba(0,0,0,.75);
+ }
 
 /* Portfolio-intro */
 #portfolio-intro .jumbotron{
@@ -94,20 +120,16 @@ margin-right: 100px;
 margin:10px;
 background-color:#4a4c4e;
 color:white;
+
 }
 
 #cardstack .card-img-top{
   margin-top:20px;
-
   width:auto;
   height:400px;
-  max-height: 300px;
-
+  object-fit:contain;
 }
 
-#infocase .container{
- background:rgba(0,0,0,.5);
-}
 
 /* misc-intro */
 #misc-intro .jumbotron{
