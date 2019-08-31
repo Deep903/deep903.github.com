@@ -126,7 +126,7 @@ color:white;
 #cardstack .card-img-top{
   margin-top:20px;
   width:auto;
-  height:400px;
+  height:300px;
   object-fit:contain;
 }
 
@@ -140,6 +140,25 @@ color:white;
   font-size: 48px;
   margin-top: 35px;
 }
+
+#misc-intro h2{
+  margin-top:35px;
+  font-size:40px;
+}
+
+#misc-intro h4{
+  margin-top:8px;
+}
+
+#misc-intro h5{
+ color:#d0d3d6;
+}
+
+#misc-intro h6{
+  color:#d0d3d6;
+}
+
+
 
 /* Showcase */
 #showcase{
