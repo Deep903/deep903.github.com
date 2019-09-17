@@ -158,7 +158,20 @@ color:white;
   color:#d0d3d6;
 }
 
+/* Carouselcard */
+#carouselcard{
+ padding = 10px;
+}
 
+#carouselcard{
+  padding:35px;
+}
+
+#carouselcard .carousel-inner img{
+  width:auto;
+  height:400px;
+  object-fit:contain;
+}
 
 /* Showcase */
 #showcase{
@@ -183,7 +196,7 @@ color:white;
   font-size:20px;
 }
 
-.carousel-inner img{
+#showcase .carousel-inner img{
   width:auto;
   height:700px;
   max-height: 700px;
