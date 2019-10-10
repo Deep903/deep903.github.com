@@ -17,6 +17,10 @@ body{
   overflow:hidden;
 }
 
+hr{
+  background-color: white;
+}
+
 ul{
   margin:0;
   padding:0;
@@ -160,17 +164,17 @@ color:white;
 
 /* Carouselcard */
 #carouselcard{
- padding = 10px;
-}
-
-#carouselcard{
-  padding:35px;
+  padding-top: 25px;
 }
 
 #carouselcard .carousel-inner img{
   width:auto;
   height:400px;
   object-fit:contain;
+}
+
+#ufo{
+  margin-top: 1%
 }
 
 /* Showcase */
@@ -208,4 +212,22 @@ color:white;
 
 .carousel-inner .caption-adobe{
 background: black;
+}
+
+/* Blog */
+#blog .jumbotron{
+  background-color:#2a2c2e;
+  color:white;
+  text-align:left;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+}
+
+#blog .jumbotron p{
+  margin-top: 5%;
+}
+
+#blog_ref{
+  margin-bottom: .5%;
+  margin-left: .5%;
 }
