@@ -15,19 +15,40 @@
     <section id="blog">
             <div class="jumbotron jumbotron-fluid">
               <div class="container">
-                <h1 class="display-3">UFO Project Blog</h1> 
+                <h1 class="display-3">UFO Project Blog</h1>
+                <h1>Search Feature</h1>
                 <hr>
                 <h1>Reference</h1>
                 <p class="lead">The reference used in this project<a id='blog_ref' href="https://www.youtube.com/watch?v=jpupXhZ92c8&list=PLy0R06Fv9ZSIHjFje2d53WztJeNjHW0zT" class="btn btn-primary">Is located here!</a></p>
-                <p class='lead'>Contribution over this reference involves implementing file saving to safe the IDF-TF values so that they do not need to be calculated every time the program runs. This improves the programs efficiently greatly!</p>
-                <p class='lead'>Additionally, the reference only gives an idea of how to do the IDF-TF calculation in python. Calculating document scores and ranking was all done by me. As well as taking in user input, and giving output.</p>
+                <p class='lead'>Contribution over this reference involves implementing file saving to save the TF-IDF values so that they do not need to be calculated every time the program runs. This improves the programs efficiently greatly!</p>
+                <p class='lead'>Additionally, the reference only gives an idea of how to do the TF-IDF calculation in python. Calculating document scores and ranking was all done by me. As well as taking in user input, and giving output.</p>
                 <hr>
                 <h1>Challenge</h1>
                 <p class='lead'>I had a few big challenges while creating this project. For example, deployment to the web, using python for the first time, and even file reading. My biggest problem however, was using Flask for the first time. To solve this issue, I extensively read the documentation on Flask along with various answers on sites like stack overflow. Input and output in flask was particularly hard for my to figure out until I read up enough information online. It does not work the same way as It does in javascript.</p>
                 <hr>
                 <h1>Algorithms (Basics)</h1>
-                <p class='lead'>First term frequency (count of terms in a document) is calculated. Then the inverse document frequency (which is a number that represents how much a term is valued at) is calculated. Lastly, the two values are multiplied to give the TF-IDF values of every word in a document. When given a query, words in the query can be searched for in every document. When found, its TF-IDF score is added up. The documents with the highest summations are the relevant ones.</p>
+                <p class='lead'>First, term frequency (count of terms in a document) is calculated. Then the inverse document frequency (which is a number that represents how much a term is valued at) is calculated. Lastly, the two values are multiplied to give the TF-IDF values of every word in a document. When given a query, words in the query can be searched for in every document. When found, its TF-IDF score is added up. The documents with the highest summations are the relevant ones.</p>
                 <p class='lead'>For ranking the document, every document is scanned for the query words. If a query word is found, its TF-IDF value is added to a sum. Documents are then ranked by sum. Thus, documents that have words with high TF-IDF scores matching the query will be ranked highly.</p>
+                <hr>
+
+                <br>
+                <h1>Classifier Feature</h1>
+                <hr>
+                <h1>Reference</h1>
+                <p class="lead">The reference used in this project<a id='blog_ref' href="https://machinelearningmastery.com/make-predictions-scikit-learn/" class="btn btn-primary">Is located here!</a></p>
+                <p class='lead'>There were a few contributions over the reference material. To start, the reference only shows how to build the model, using the model was implemented by me. Additionally, user input was also added. That way queries could be processed and classified appropriately using the model.</p>
+                <hr>
+                <h1>Challenge</h1>
+                <p class='lead'>Major challenges included a lack of machine learning knowledge, and lack of which model would be best, and again struggles with using python/flask. The reference helped greatly by explaining how the machine learning models all worked. I went with a Naive Bayes classifier because it seemed accurate and easy to implement. The python struggles were much less now that I have been working in it for a while. When I ran into an issue, I simply looked at documentation for the answer.</p>
+                <hr>
+                <h1>Algorithms (Basics)</h1>
+                <p class='lead'>To start, I needed to use TF-IDF. This is explained above in the "Search Feature" blog post. To summarize, it is a combination of the term frequency and the inverse document frequency. The dataset is also split into parts. A 70% training set and a 30% test set.</p>
+                <p class='lead'>Next, the model is built using the data from the training set. Naive Bayes uses probability to classify items. Thus, the model is essentially the relationship between a documents tf-idf and it's classifier. For the classifier, we are classifying the shapes of UFO's. </p>
+                <p class='lead'>The end result is that the model can take the TF-IDF of a query and find the probability that it is a given shape.</p>
+                <hr>
+                <h1>Evaluation</h1>
+                <p class='lead'>Using the testing dataset, it is possible to see how accurate the model truly is. In my testing, the accuracy of the model was 36.46%. While this may seem slow, I believe I have found the reason. The actual 'shape' catagories can be very ambiguous. For example, 'circle', 'sphere', and 'fireball' are all very similar so it is easy for the model to make a mistake. So even though the model is 'wrong' using the test data. In practice it is pretty close most of the time.</p>
+                <hr>
             </div>
             </div>
         </section>
