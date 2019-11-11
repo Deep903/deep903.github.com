@@ -35,7 +35,7 @@
                 <h1>Classifier Feature</h1>
                 <hr>
                 <h1>Reference</h1>
-                <p class="lead">The reference used in this project<a id='blog_ref' href="https://machinelearningmastery.com/make-predictions-scikit-learn/" class="btn btn-primary">Is located here!</a></p>
+                <p class="lead">The reference used in this project<a id='blog_ref' href="https://www.analyticsvidhya.com/blog/2018/04/a-comprehensive-guide-to-understand-and-implement-text-classification-in-python/" class="btn btn-primary">Is located here!</a></p>
                 <p class='lead'>There were a few contributions over the reference material. To start, the reference only shows how to build the model, using the model was implemented by me. Additionally, user input was also added. That way queries could be processed and classified appropriately using the model.</p>
                 <hr>
                 <h1>Challenge</h1>
@@ -48,6 +48,26 @@
                 <hr>
                 <h1>Evaluation</h1>
                 <p class='lead'>Using the testing dataset, it is possible to see how accurate the model truly is. In my testing, the accuracy of the model was 36.46%. While this may seem slow, I believe I have found the reason. The actual 'shape' catagories can be very ambiguous. For example, 'circle', 'sphere', and 'fireball' are all very similar so it is easy for the model to make a mistake. So even though the model is 'wrong' using the test data. In practice it is pretty close most of the time.</p>
+                <hr>
+                <h1>Experiment</h1>
+                <p class='lead'>The following table shows the results of a experiment where I tested two different types of models. The first is a SVM model which had an accuracy of 25.54%. Meanwhile, my Naive Bayes testing gave a 36.46% accuracy. It was also faster to create the Naive Bayes model.</p>
+                <table style="width:100%; font-size:50%; margin-top:10px">
+                    <tr>
+                        <th>Model</th>
+                        <th>Speed</th>
+                        <th>Accuracy</th>
+                    </tr>
+                    <tr>
+                        <td>SVM</td>
+                        <td>~7 minutes</td>
+                        <td>25.54%</td>
+                    </tr>
+                    <tr>
+                        <td>Naive Bayes</td>
+                        <td>~4 minutes</td>
+                        <td>36.46%</td>
+                    </tr>
+                </table>
                 <hr>
             </div>
             </div>
