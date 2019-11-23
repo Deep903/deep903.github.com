@@ -35,39 +35,34 @@
                 <h1>Classifier Feature</h1>
                 <hr>
                 <h1>Reference</h1>
-                <p class="lead">The reference used in this project<a id='blog_ref' href="https://www.analyticsvidhya.com/blog/2018/04/a-comprehensive-guide-to-understand-and-implement-text-classification-in-python/" class="btn btn-primary">Is located here!</a></p>
-                <p class='lead'>There were a few contributions over the reference material. To start, the reference only shows how to build the model, using the model was implemented by me. Additionally, user input was also added. That way queries could be processed and classified appropriately using the model.</p>
+                <p class="lead">The reference used in this project<a id='blog_ref' href="https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/" class="btn btn-primary">Is located here!</a></p>
+                <p class='lead'>There were a few contributions over the reference material. To start, the reference only shows how to build the model, using the model was implemented by me. Additionally, user input was also added. That way queries could be processed and classified appropriately using the model. Figuring out how to output all the classification probabilities to flask was another challenge.</p>
                 <hr>
                 <h1>Challenge</h1>
-                <p class='lead'>Major challenges included a lack of machine learning knowledge, and lack of which model would be best, and again struggles with using python/flask. The reference helped greatly by explaining how the machine learning models all worked. I went with a Naive Bayes classifier because it seemed accurate and easy to implement. The python struggles were much less now that I have been working in it for a while. When I ran into an issue, I simply looked at documentation for the answer.</p>
+                <p class='lead'>Major challenges included a lack of machine learning knowledge, and lack of which model would be best, and again struggles with using python/flask. The reference helped greatly by explaining how naive bayes worked, particularly in python programming. I went with a Naive Bayes classifier because it seemed accurate and easy to implement. The python struggles were much less now that I have been working in it for a while. When I ran into an issue, I simply looked at documentation for the answer.</p>
                 <hr>
                 <h1>Algorithms (Basics)</h1>
-                <p class='lead'>To start, I needed to use TF-IDF. This is explained above in the "Search Feature" blog post. To summarize, it is a combination of the term frequency and the inverse document frequency. The dataset is also split into parts. A 70% training set and a 30% test set.</p>
-                <p class='lead'>Next, the model is built using the data from the training set. Naive Bayes uses probability to classify items. Thus, the model is essentially the relationship between a documents tf-idf and it's classifier. For the classifier, we are classifying the shapes of UFO's. </p>
-                <p class='lead'>The end result is that the model can take the TF-IDF of a query and find the probability that it is a given shape.</p>
+                <p class='lead'>The dataset is first split into parts. A 70% training set and a 30% test set.</p>
+                <p class='lead'>Next, the model is built using the data from the training set. Naive Bayes uses probability to classify items. Thus, the model is essentially the relationship between a documents contents and it's classifier. For the classifier, we are classifying the shapes of UFO's. </p>
+                <p class='lead'>The end result is that the model can take the TF-IDF of a query and find the probability that it is a given shape. In fact, Naive Bayes finds the probability of all possible classifications, and choses the one with the highest probability. Naive Bayes essentially gives the P(x|y) where x is a classification, and y is the contents of the query.</p>
                 <hr>
                 <h1>Evaluation</h1>
-                <p class='lead'>Using the testing dataset, it is possible to see how accurate the model truly is. In my testing, the accuracy of the model was 36.46%. While this may seem slow, I believe I have found the reason. The actual 'shape' catagories can be very ambiguous. For example, 'circle', 'sphere', and 'fireball' are all very similar so it is easy for the model to make a mistake. So even though the model is 'wrong' using the test data. In practice it is pretty close most of the time.</p>
+                <p class='lead'>Using the testing dataset, it is possible to see how accurate the model truly is. In my testing, the accuracy of the model was 42.56%. While this may seem low, I believe I have found the reason. The actual 'shape' catagories can be very ambiguous. For example, 'circle', 'sphere', and 'fireball' are all very similar so it is easy for the model to make a mistake. So even though the model is 'wrong' using the test data. In practice it is pretty close most of the time. The final model actually combines the previously mentioned classifications into one. There was also the added problem that I was lacking enough data for some of the classifications. For example, very few records were classified as "cigar", so it made classifying a cigar shaped UFO hard to do.</p>
                 <hr>
-                <h1>Experiment</h1>
-                <p class='lead'>The following table shows the results of a experiment where I tested two different types of models. The first is a SVM model which had an accuracy of 25.54%. Meanwhile, my Naive Bayes testing gave a 36.46% accuracy. It was also faster to create the Naive Bayes model.</p>
-                <table style="width:100%; font-size:50%; margin-top:10px">
-                    <tr>
-                        <th>Model</th>
-                        <th>Speed</th>
-                        <th>Accuracy</th>
-                    </tr>
-                    <tr>
-                        <td>SVM</td>
-                        <td>~7 minutes</td>
-                        <td>25.54%</td>
-                    </tr>
-                    <tr>
-                        <td>Naive Bayes</td>
-                        <td>~4 minutes</td>
-                        <td>36.46%</td>
-                    </tr>
-                </table>
+
+                <br>
+                <h1>Image Search Feature</h1>
+                <hr>
+                <h1>Reference</h1>
+                <p class="lead">The reference used in this project<a id='blog_ref' href="https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/text/image_captioning.ipynb#scrollTo=9Psd1quzaAWg" class="btn btn-primary">Is located here!</a></p>
+                <p class='lead'>The reference used is a Jupyter notebook hosted on google colab. After learning how the reference worked by reading the comments, some of the code had to be modified. For starters, the notebook would only caption a single image, so the code had to be modified to caption many images within my google drive. Next, the generated image captions, as well as the filenames for their respective images had to be saved. This was done by importing pickle and saving the variables on the notebook right into drive. From there, code from the first feature was used to TF-IDF search the captions. Additional code was added to allow for displaying images.</p>
+                <hr>
+                <h1>Challenge</h1>
+                <p class='lead'>Major challenges include lack of experience with Jupyter notebook as well as google cloud. The two previous parts of the project have given me a strong foundation in python which allowed me to overcome this barrier.</p>
+                <hr>
+                <h1>Algorithms (Basics)</h1>
+                <p class='lead'>This feature uses a neural network to generate captions. Neural networks work in layers. Each layer has a certain amount of inputs that can either be on or off. Depending on the state of those inputs, the next layer with also set their states to either on or off. This applies for every layer until the output, and allows for very complex learning. This process is actually modeled after how neurons in the brain interact.</p>
+                <p class='lead'>In order to function correctly, the neural network needs to be trained with a dataset and captions. The dataset can actually be iterated through more than once in order to improve the model. Every single one of these cycles is called an epoch.</p>
                 <hr>
             </div>
             </div>
