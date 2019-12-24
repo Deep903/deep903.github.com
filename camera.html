@@ -167,7 +167,7 @@
   function find_UID(UID){
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1AR2tq0Hz6uiGUQGNGzL1nohX15l6TGKq3NcyGOMP_pA',
-          range: 'Registration Database!A:A',
+          range: 'MASTER!A:A',
         }).then(function(response) {
           var range = response.result;
           var found = 0;
@@ -204,7 +204,7 @@
   function list_UID_Info(indexer){
     gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1AR2tq0Hz6uiGUQGNGzL1nohX15l6TGKq3NcyGOMP_pA',
-          range: 'Registration Database!C:D',
+          range: 'MASTER!C:D',
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
@@ -267,7 +267,7 @@
       spreadsheetId: '1AR2tq0Hz6uiGUQGNGzL1nohX15l6TGKq3NcyGOMP_pA',
           
         // The A1 notation of the values to update.
-        range: 'Registration Database!B'+indexer+":B"+indexer,  // TODO: Update placeholder value.
+        range: 'MASTER!B'+indexer+":B"+indexer,  // TODO: Update placeholder value.
         // How the input data should be interpreted.
         valueInputOption: 'USER_ENTERED',  // TODO: Update placeholder value.
         
@@ -279,7 +279,7 @@
       var valueRangeBody = {
         // TODO: Add desired properties to the request body. All existing properties
         // will be replaced.
-        "range": "Registration Database!B"+indexer+":B"+indexer,
+        "range": "MASTER!B"+indexer+":B"+indexer,
         "majorDimension": "ROWS",
         "values": [["Checked In"]]
       };
