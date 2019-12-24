@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head onload="setData()">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Check-In</title>
+    <meta name="description" content="Enabeling System Camera to scan for barcodes to recieve values in return" />
+
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+    <style>
+      .margin-auto {
+        margin: 2em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+
+      <div class="row margin-auto">
+
+        <div class="col-xs-6">
+        <a href="index.html"><button class="btn btn-block btn-primary">Back</button></a>
+        </div>
+
+        <div class="col-xs-6">
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="authorize_button" class="btn btn-block btn-primary">Authorize</button>
+    <button id="signout_button" class="btn btn-danger btn-block">Sign Out</button>
+    </div>
+
+  </div>
+
+    <pre id="content" style="white-space: pre-wrap;"></pre>
+
+    <script type="text/javascript">
+      // Client ID and API key from the Developer Console
+      var CLIENT_ID = '376108022026-gigtjdn1h1hcd721572rl7e6dmvi5ilm.apps.googleusercontent.com';
+      var API_KEY = 'AIzaSyD7ipgKapt09Ts_iK_TTbXKnQvFGA9_BOc';
+      // Array of API discovery doc URLs for APIs used by the quickstart
+      var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      var SCOPES = "https://www.googleapis.com/auth/spreadsheets";
+      var authorizeButton = document.getElementById('authorize_button');
+      var signoutButton = document.getElementById('signout_button');
+      /**
+       *  On load, called to load the auth2 library and API client library.
+       */
+      function handleClientLoad() {
+        gapi.load('client:auth2', initClient);
+      }
+      /**
+       *  Initializes the API client library and sets up sign-in state
+       *  listeners.
+       */
+      function initClient() {
+        gapi.client.init({
+          apiKey: API_KEY,
+          clientId: CLIENT_ID,
+          discoveryDocs: DISCOVERY_DOCS,
+          scope: SCOPES
+        }).then(function () {
+          // Listen for sign-in state changes.
+          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+          // Handle the initial sign-in state.
+          updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+          authorizeButton.onclick = handleAuthClick;
+          signoutButton.onclick = handleSignoutClick;
+        }, function(error) {
+          appendPre(JSON.stringify(error, null, 2));
+        });
+      }
+      /**
+       *  Called when the signed in status changes, to update the UI
+       *  appropriately. After a sign-in, the API is called.
+       */
+      function updateSigninStatus(isSignedIn) {
+        if (isSignedIn) {
+          authorizeButton.style.display = 'none';
+          signoutButton.style.display = 'block';
+         // listMajors();
+          //fillSheet(resultant); Old API Call location
+        } else {
+          authorizeButton.style.display = 'block';
+          signoutButton.style.display = 'none';
+        }
+      }
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClick(event) {
+        gapi.auth2.getAuthInstance().signIn();
+      }
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClick(event) {
+        gapi.auth2.getAuthInstance().signOut();
+      }
+      /**
+       * Append a pre element to the body containing the given message
+       * as its text node. Used to display the results of the API call.
+       *
+       * @param {string} message Text to be placed in pre element.
+       */
+      function appendPre(message) {
+        var pre = document.getElementById('content');
+        var textContent = document.createTextNode(message + '\n');
+        pre.appendChild(textContent);
+      }
+ 
+      function listMajors() {
+        gapi.client.sheets.spreadsheets.values.get({
+          spreadsheetId: '1AR2tq0Hz6uiGUQGNGzL1nohX15l6TGKq3NcyGOMP_pA',
+          range: 'From Website!A1:A7',
+        }).then(function(response) {
+          var range = response.result;
+          if (range.values.length > 0) {
+          //  appendPre('UID');
+            for (i = 0; i < range.values.length; i++) {
+              var row = range.values[i];
+              // Print columns A and E, which correspond to indices 0 and 4.
+            //  appendPre(row[0]);
+            }
+          } else {
+            appendPre('No data found.');
+          }
+        }, function(response) {
+          appendPre('Error: ' + response.result.error.message);
+        });
+      }
+      function fillSheet(resultant) {
+      var params = {
+        // The ID of the spreadsheet to update.
+      //  spreadsheetId: 'my-spreadsheet-id',  // TODO: Update placeholder value.
+      spreadsheetId: '1AR2tq0Hz6uiGUQGNGzL1nohX15l6TGKq3NcyGOMP_pA',
+          
+        // The A1 notation of the values to update.
+        range: 'From Website!A10:A10',  // TODO: Update placeholder value.
+        // How the input data should be interpreted.
+        valueInputOption: 'USER_ENTERED',  // TODO: Update placeholder value.
+        
+      };
+  
+          
+          console.log(resultant);
+     
+      var valueRangeBody = {
+        // TODO: Add desired properties to the request body. All existing properties
+        // will be replaced.
+        "range": "From Website!A10:A10",
+        "majorDimension": "ROWS",
+        "values": [[resultant]]
+      };
+      var request = gapi.client.sheets.spreadsheets.values.update(params, valueRangeBody);
+      request.then(function(response) {
+        // TODO: Change code below to process the `response` object:
+        console.log(response.result);
+      }, function(reason) {
+        console.error('error: ' + reason.result.error.message);
+      });
+    }
+  function find_UID(UID){
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1AR2tq0Hz6uiGUQGNGzL1nohX15l6TGKq3NcyGOMP_pA',
+          range: 'Registration Database!A:A',
+        }).then(function(response) {
+          var range = response.result;
+          var found = 0;
+          if (range.values.length > 0) {
+            //appendPre('Name, Major:');
+           // appendPre('UID:');
+            //for (i = 0; i < range.values.length; i++) {
+             // var row = range.values[i];
+              // Print columns A and E, which correspond to indices 0 and 4.
+             // appendPre(row[0] + ', ' + row[4]);
+           // }
+            for (i=0; i<range.values.length; i++){
+              var row = range.values[i];
+              if(UID == row[0])
+              {
+              console.log("WE FOUND IT!:" + UID + "Is Equal to" + row[0])
+              console.log("Index @:" + i);
+              list_UID_Info(i);
+              found = 1;
+              }
+            }
+            if(found == 0)
+            alert("No User found with this ID");
+          } else {
+            appendPre('No data found.');
+           // alert("No User found with this ID");
+            //DEEP AND ARPAN: IN THIS ELSE GOES THE ON_SPOT_REGISTRATION function
+            //The scanner did not find the barcode # if it reaches this code!!!
+          }
+        }, function(response) {
+          appendPre('Error: ' + response.result.error.message);
+        });
+      }
+  function list_UID_Info(indexer){
+    gapi.client.sheets.spreadsheets.values.get({
+          spreadsheetId: '1AR2tq0Hz6uiGUQGNGzL1nohX15l6TGKq3NcyGOMP_pA',
+          range: 'Registration Database!C:D',
+        }).then(function(response) {
+          var range = response.result;
+          if (range.values.length > 0) {
+            //appendPre('FirstName, LastName:');
+          
+            
+              var row = range.values[indexer];
+              // Print columns C and D, which correspond to indices 0 and 1.
+              //appendPre(row[0] + ', ' + row[1]);
+              
+                //console.log(row);
+              
+              var check = confirm('Firstname, Lastname:'+'\n'+ row[0] + ', ' + row[1]);
+              
+            // var button = document.createElement("button");
+            // button.innerHTML = "Confirm";
+          //  var form = document.getElementsByTagName("form")[0];
+          //  form.appendChild(button);
+            //button.setAttribute('id', 'temp_Button')
+            //document.getElementById("temp_Button").addEventListener("click", mark_Checkin(indexer));
+          
+            //document.getElementById("temp_Button").onclick = mark_Checkin(indexer);
+       
+            //  button.onclick= mark_Checkin(indexer);
+              //mark_Checkin(indexer);
+           // for (i=0; i<range.values.length; i++){
+             // var row = range.values[i];
+            //  if(UID == row[0])
+           //   {
+           //   console.log("WE FOUND IT!:" + UID + "Is Equal to" + row[0])
+           //   console.log("Index @:" + i);
+           //   list_UID_Info(i);
+         //     }
+           // }
+           if(check == true)
+           {
+             mark_Checkin(indexer);
+           }
+           else
+           {
+             //VALIDATION CHECK HAS FAILED
+           }
+          } else {
+            appendPre('No data found.');
+            //alert("No user found");
+            //DEEP AND ARPAN: IN THIS ELSE GOES THE ON_SPOT_REGISTRATION function
+            //The scanner did not find the barcode # if it reaches this code!!!
+          }
+        }, function(response) {
+          appendPre('Error: ' + response.result.error.message);
+        });
+      }
+    function mark_Checkin(indexer)
+    {
+      //document.getElementById("temp_Button").outerHTML = "";
+      indexer++; //Indexer is dumb so add 1.
+      var params = {
+        // The ID of the spreadsheet to update.
+      //  spreadsheetId: 'my-spreadsheet-id',  // TODO: Update placeholder value.
+      spreadsheetId: '1AR2tq0Hz6uiGUQGNGzL1nohX15l6TGKq3NcyGOMP_pA',
+          
+        // The A1 notation of the values to update.
+        range: 'Registration Database!B'+indexer+":B"+indexer,  // TODO: Update placeholder value.
+        // How the input data should be interpreted.
+        valueInputOption: 'USER_ENTERED',  // TODO: Update placeholder value.
+        
+      };
+  
+          
+          console.log(indexer);
+     
+      var valueRangeBody = {
+        // TODO: Add desired properties to the request body. All existing properties
+        // will be replaced.
+        "range": "Registration Database!B"+indexer+":B"+indexer,
+        "majorDimension": "ROWS",
+        "values": [["Checked In"]]
+      };
+      var request = gapi.client.sheets.spreadsheets.values.update(params, valueRangeBody);
+      request.then(function(response) {
+        // TODO: Change code below to process the `response` object:
+        console.log(response.result);
+      }, function(reason) {
+        console.error('error: ' + reason.result.error.message);
+      });
+    }
+    function hideDiv()
+    {
+      var hider = document.getElementById("container");
+      hider.style.display = "none";
+      
+    }
+    function setData()
+    {
+      var FirstName = localStorage.getItem("FirstName");
+      var LastName = localStorage.getItem("LastName");
+      var Email = localStorage.getItem("Email");
+      var Phone = localStorage.getItem("Phone");
+      var Address = localStorage.getItem("Address");
+      var City = localStorage.getItem("City");
+    }
+
+    
+    </script>
+
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+
+    <div class="row margin-auto">
+
+    
+    <form id="Lookup" onSubmit="return false;">
+      <div class="col-xs-12">
+      <label for="text">Unique Identification: </label>
+      <input type = 'text' id = "lookup_ID" action = "#">
+      <input type = "button"  class="btn btn-success" onclick="send_Lookup()" value = "Lookup">
+    </form>
+    <script>
+      function send_Lookup()
+      {
+        var lookup = document.getElementById("lookup_ID").value;
+        find_UID(lookup);
+      }
+    </script>
+  </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="result_strip">
+    <ul class="thumbnails"></ul>
+    <ul class="collector"></ul>
+  </div>
+
+
+
+
+
+
+
+
+    <section id="container" class="container">
+
+        
+
+      <div id="interactive" class="viewport"></div>
+    </section>
+
+    <footer>
+      <h2>Built Using:</h2>
+      <p>Google Sheets API, Javascript, HTML, CSS, Bootstrap, and QuaggaJS Barcode*</p>
+        <p>
+          &copy; Made Christoph Oberhofer*
+        </p>
+    </footer>
+
+
+
+      
+    <script src="jquery-1.9.0.min.js" type="text/javascript"></script>
+    <script src="//webrtc.github.io/adapter/adapter-latest.js" type="text/javascript"></script>
+    <script src="quagga.js" type="text/javascript"></script>
+    <script src="camera.js" type="text/javascript"></script>
+
+  </div>
+  </body>
+</html>
