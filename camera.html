@@ -204,7 +204,7 @@
   function list_UID_Info(indexer){
     gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1AR2tq0Hz6uiGUQGNGzL1nohX15l6TGKq3NcyGOMP_pA',
-          range: 'MASTER!C:D',
+          range: 'MASTER!C:E',
         }).then(function(response) {
           var range = response.result;
           if (range.values.length > 0) {
@@ -217,7 +217,7 @@
               
                 //console.log(row);
               
-              var check = confirm('Firstname, Lastname:'+'\n'+ row[0] + ', ' + row[1]);
+              var check = confirm('Firstname, Lastname:'+'\n'+ row[0] + ', ' + row[2]);
               
             // var button = document.createElement("button");
             // button.innerHTML = "Confirm";
@@ -267,7 +267,7 @@
       spreadsheetId: '1AR2tq0Hz6uiGUQGNGzL1nohX15l6TGKq3NcyGOMP_pA',
           
         // The A1 notation of the values to update.
-        range: 'MASTER!B'+indexer+":B"+indexer,  // TODO: Update placeholder value.
+        range: 'MASTER!K'+indexer+":K"+indexer,  // TODO: Update placeholder value.
         // How the input data should be interpreted.
         valueInputOption: 'USER_ENTERED',  // TODO: Update placeholder value.
         
@@ -279,7 +279,7 @@
       var valueRangeBody = {
         // TODO: Add desired properties to the request body. All existing properties
         // will be replaced.
-        "range": "MASTER!B"+indexer+":B"+indexer,
+        "range": "MASTER!K"+indexer+":K"+indexer,
         "majorDimension": "ROWS",
         "values": [["Checked In"]]
       };
