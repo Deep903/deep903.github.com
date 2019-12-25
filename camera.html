@@ -115,7 +115,7 @@
  
       function listMajors() {
         gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: '1AR2tq0Hz6uiGUQGNGzL1nohX15l6TGKq3NcyGOMP_pA',
+          spreadsheetId: '1R-JVWdYSWrX8v6QlDFuv89iscsNHGB6-FOsAiQdE44E',
           range: 'From Website!A1:A7',
         }).then(function(response) {
           var range = response.result;
@@ -137,7 +137,7 @@
       var params = {
         // The ID of the spreadsheet to update.
       //  spreadsheetId: 'my-spreadsheet-id',  // TODO: Update placeholder value.
-      spreadsheetId: '1AR2tq0Hz6uiGUQGNGzL1nohX15l6TGKq3NcyGOMP_pA',
+      spreadsheetId: '1R-JVWdYSWrX8v6QlDFuv89iscsNHGB6-FOsAiQdE44E',
           
         // The A1 notation of the values to update.
         range: 'From Website!A10:A10',  // TODO: Update placeholder value.
@@ -166,7 +166,7 @@
     }
   function find_UID(UID){
     gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: '1AR2tq0Hz6uiGUQGNGzL1nohX15l6TGKq3NcyGOMP_pA',
+        spreadsheetId: '1R-JVWdYSWrX8v6QlDFuv89iscsNHGB6-FOsAiQdE44E',
           range: 'MASTER!A:A',
         }).then(function(response) {
           var range = response.result;
@@ -203,7 +203,7 @@
       }
   function list_UID_Info(indexer){
     gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: '1AR2tq0Hz6uiGUQGNGzL1nohX15l6TGKq3NcyGOMP_pA',
+          spreadsheetId: '1R-JVWdYSWrX8v6QlDFuv89iscsNHGB6-FOsAiQdE44E',
           range: 'MASTER!C:E',
         }).then(function(response) {
           var range = response.result;
@@ -264,7 +264,7 @@
       var params = {
         // The ID of the spreadsheet to update.
       //  spreadsheetId: 'my-spreadsheet-id',  // TODO: Update placeholder value.
-      spreadsheetId: '1AR2tq0Hz6uiGUQGNGzL1nohX15l6TGKq3NcyGOMP_pA',
+      spreadsheetId: '1R-JVWdYSWrX8v6QlDFuv89iscsNHGB6-FOsAiQdE44E',
           
         // The A1 notation of the values to update.
         range: 'MASTER!K'+indexer+":K"+indexer,  // TODO: Update placeholder value.
